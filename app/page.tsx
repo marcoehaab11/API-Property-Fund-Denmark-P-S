@@ -1,66 +1,73 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+
+import React from 'react';
+import Link from 'next/link';
+import { useLanguage } from '@/context/LanguageContext';
+import styles from './page.module.css';
 
 export default function Home() {
+  const { t } = useLanguage();
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div>
+      {/* Hero Section */}
+      <section className={styles.hero}>
+        <div className={styles.heroBackground}>
+          <img src="/hero.png" alt="API Property Fund Hero" />
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className={styles.heroOverlay}></div>
+        <div className={`container ${styles.heroContent}`}>
+          <h1>{t('hero.title')}</h1>
+          <p>{t('hero.subtitle')}</p>
+          <div className={styles.heroActions}>
+            <Link href="/contact" className="btn btn-primary">
+              {t('cta.primary')}
+            </Link>
+            <Link href="/portfolio" className="btn btn-outline">
+              {t('cta.secondary')}
+            </Link>
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* Stats Section */}
+      <section className={styles.statsSection}>
+        <div className={`container ${styles.statsGrid}`}>
+          <div className={styles.statItem}>
+            <h3>€1.2B</h3>
+            <p>Assets Under Management</p>
+          </div>
+          <div className={styles.statItem}>
+            <h3>45+</h3>
+            <p>Properties in Denmark</p>
+          </div>
+          <div className={styles.statItem}>
+            <h3>98%</h3>
+            <p>Occupancy Rate</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Value Proposition Section */}
+      <section className={`section ${styles.valuePropSection}`}>
+        <div className="container">
+          <h2 className="text-center">Our Core Services</h2>
+          <div className={styles.valueGrid}>
+            <div className={styles.valueCard}>
+              <h3>Investment Management</h3>
+              <p>Strategic capital allocation in top-tier Danish property markets to secure sustainable, long-term yields.</p>
+            </div>
+            <div className={styles.valueCard}>
+              <h3>Asset Management</h3>
+              <p>Optimizing property performance, reducing operational costs, and fostering strong tenant relations.</p>
+            </div>
+            <div className={styles.valueCard}>
+              <h3>Project Development</h3>
+              <p>Modernizing and developing both residential and commercial sites to meet modern institutional standards.</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

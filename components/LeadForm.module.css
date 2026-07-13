@@ -1,0 +1,62 @@
+.formContainer {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroup label {
+  margin-bottom: var(--spacing-xs);
+  font-weight: 500;
+  color: var(--color-primary);
+  font-size: 0.875rem;
+}
+
+.honeypot {
+  display: none !important;
+}
+
+.successMessage {
+  text-align: center;
+  padding: var(--spacing-xl) 0;
+}
+
+.successMessage svg {
+  width: 64px;
+  height: 64px;
+  color: #10b981;
+  margin-bottom: var(--spacing-md);
+}
+
+.successMessage h3 {
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.btnSubmit {
+  width: 100%;
+  margin-top: var(--spacing-md);
+}
+
+@media (min-width: 640px) {
+  .formGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .fullWidth {
+    grid-column: 1 / -1;
+  }
+}
